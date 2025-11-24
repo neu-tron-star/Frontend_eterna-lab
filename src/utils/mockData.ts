@@ -1,41 +1,63 @@
 import { Token, TokenStatus } from '@/store/slices/tokensSlice';
 
 const tokenNames = [
-  { symbol: 'PEPE', name: 'Pepe' },
-  { symbol: 'SHIB', name: 'Shiba Inu' },
-  { symbol: 'DOGE', name: 'Dogecoin' },
-  { symbol: 'BONK', name: 'Bonk' },
-  { symbol: 'WIF', name: 'dogwifhat' },
-  { symbol: 'FLOKI', name: 'Floki Inu' },
-  { symbol: 'MEME', name: 'Memecoin' },
-  { symbol: 'WOJAK', name: 'Wojak' },
-  { symbol: 'TURBO', name: 'Turbo' },
-  { symbol: 'LADYS', name: 'Milady' },
-  { symbol: 'BITE', name: 'DragonBite' },
-  { symbol: 'TSUKA', name: 'Dejitaru Tsuka' },
-  { symbol: 'HIGHER', name: 'Higher' },
-  { symbol: 'MONG', name: 'MongCoin' },
-  { symbol: 'FOUR', name: 'The 4th Pillar' },
+  { symbol: 'EDP', name: 'Every Day Problems', image: '👨‍💼' },
+  { symbol: 'Spongebob', name: 'SpongeBob SquarePants', image: '🧽' },
+  { symbol: 'MONSHIT', name: 'MONSHIT', image: '💎' },
+  { symbol: 'Skirliton', name: 'Skirliton', image: '💀' },
+  { symbol: 'McMonad', name: 'Mc Monad', image: '🍔' },
+  { symbol: 'Google', name: 'Google', image: '🔍' },
+  { symbol: 'BRIDGLESS', name: 'Bridgless Coin', image: '🅱️' },
+  { symbol: 'CHIIKAWA', name: 'ちいかわ アニメ火金', image: '🐰' },
+  { symbol: '7ev', name: '@7evenbot', image: '🎮' },
+  { symbol: 'WeChat', name: 'Chinese App', image: '💬' },
+  { symbol: 'Tesla', name: 'Tesla', image: '🚗' },
 ];
+
+const generateAddress = () => {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789';
+  let result = '';
+  for (let i = 0; i < 8; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
 
 function generateToken(index: number, status: TokenStatus): Token {
   const tokenInfo = tokenNames[index % tokenNames.length];
-  const basePrice = Math.random() * 0.01;
-  const priceChange = (Math.random() - 0.5) * 50; // -25% to +25%
+  const basePrice = Math.random() * 200 + 10;
+  const priceChange = (Math.random() - 0.5) * 200;
+  const timeValue = Math.floor(Math.random() * 60) + 1;
+  const timeUnits = ['s', 'm', 'h'];
+  const timeUnit = timeUnits[Math.floor(Math.random() * timeUnits.length)];
   
   return {
     id: `token-${status}-${index}`,
-    symbol: `${tokenInfo.symbol}${index}`,
-    name: `${tokenInfo.name} ${index}`,
-    price: parseFloat(basePrice.toFixed(6)),
+    symbol: tokenInfo.symbol,
+    name: tokenInfo.name,
+    image: tokenInfo.image,
+    price: parseFloat(basePrice.toFixed(2)),
     priceChange24h: parseFloat(priceChange.toFixed(2)),
-    volume24h: Math.floor(Math.random() * 10000000) + 100000,
-    marketCap: Math.floor(Math.random() * 50000000) + 500000,
-    liquidity: Math.floor(Math.random() * 5000000) + 50000,
-    holders: Math.floor(Math.random() * 10000) + 100,
+    volume24h: Math.floor(Math.random() * 50000) + 1000,
+    marketCap: Math.floor(Math.random() * 20000000) + 100000,
+    liquidity: Math.floor(Math.random() * 5000000) + 10000,
+    holders: Math.floor(Math.random() * 300) + 1,
     status,
     createdAt: Date.now() - Math.floor(Math.random() * 86400000),
     lastUpdate: Date.now(),
+    timeAgo: `${timeValue}${timeUnit}`,
+    likes: Math.floor(Math.random() * 10),
+    dislikes: Math.floor(Math.random() * 5),
+    comments: Math.floor(Math.random() * 100),
+    flags: Math.floor(Math.random() * 100),
+    txCount: Math.floor(Math.random() * 500) + 1,
+    feeRatio: parseFloat((Math.random() * 0.5).toFixed(2)),
+    change1h: parseFloat(((Math.random() - 0.5) * 200).toFixed(2)),
+    change5m: parseFloat(((Math.random() - 0.5) * 100).toFixed(2)),
+    change1m: parseFloat(((Math.random() - 0.5) * 50).toFixed(2)),
+    liquidityChange: parseFloat(((Math.random() - 0.5) * 100).toFixed(2)),
+    volumeChange: parseFloat(((Math.random() - 0.5) * 100).toFixed(2)),
+    address: `${generateAddress()}...${generateAddress().slice(0, 4)}`,
   };
 }
 

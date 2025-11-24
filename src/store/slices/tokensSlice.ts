@@ -6,6 +6,7 @@ export interface Token {
   id: string;
   symbol: string;
   name: string;
+  image: string;
   price: number;
   priceChange24h: number;
   volume24h: number;
@@ -15,6 +16,19 @@ export interface Token {
   status: TokenStatus;
   createdAt: number;
   lastUpdate: number;
+  timeAgo: string;
+  likes: number;
+  dislikes: number;
+  comments: number;
+  flags: number;
+  txCount: number;
+  feeRatio: number;
+  change1h: number;
+  change5m: number;
+  change1m: number;
+  liquidityChange: number;
+  volumeChange: number;
+  address: string;
 }
 
 interface TokensState {
