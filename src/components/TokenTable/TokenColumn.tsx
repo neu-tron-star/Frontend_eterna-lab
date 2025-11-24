@@ -2,11 +2,10 @@ import { memo, useMemo, useState } from 'react';
 import { Token } from '@/store/slices/tokensSlice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { setSortBy } from '@/store/slices/tokensSlice';
-import TokenCard from './TokenCard';
+import DetailedTokenCard from './DetailedTokenCard';
 import TokenModal from './TokenModal';
 import LoadingSkeleton from './LoadingSkeleton';
-import SortableHeader from './SortableHeader';
-import { Card } from '@/components/ui/card';
+import ColumnHeader from './ColumnHeader';
 
 interface TokenColumnProps {
   title: string;
@@ -50,47 +49,15 @@ const TokenColumn = memo(({ title, status }: TokenColumnProps) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <Card className="p-4 mb-4 bg-card/50 backdrop-blur-sm border-primary/20">
-        <h2 className="text-lg font-bold mb-3 text-primary">{title}</h2>
-        <div className="flex gap-2 flex-wrap">
-          <SortableHeader
-            label="Price"
-            sortKey="price"
-            currentSortBy={sortBy}
-            sortOrder={sortOrder}
-            onSort={handleSort}
-          />
-          <SortableHeader
-            label="Change"
-            sortKey="priceChange24h"
-            currentSortBy={sortBy}
-            sortOrder={sortOrder}
-            onSort={handleSort}
-          />
-          <SortableHeader
-            label="Volume"
-            sortKey="volume24h"
-            currentSortBy={sortBy}
-            sortOrder={sortOrder}
-            onSort={handleSort}
-          />
-          <SortableHeader
-            label="Liquidity"
-            sortKey="liquidity"
-            currentSortBy={sortBy}
-            sortOrder={sortOrder}
-            onSort={handleSort}
-          />
-        </div>
-      </Card>
+    <div className="flex flex-col h-full bg-background border border-border">
+      <ColumnHeader title={title} />
 
-      <div className="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+      <div className="flex-1 overflow-y-auto space-y-2 p-2">
         {isLoading ? (
           <LoadingSkeleton />
         ) : (
           filteredAndSortedTokens.map(token => (
-            <TokenCard
+            <DetailedTokenCard
               key={token.id}
               token={token}
               onClick={handleTokenClick}
