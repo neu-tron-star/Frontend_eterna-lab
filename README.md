@@ -1,53 +1,56 @@
-# Welcome to your Lovable project
+# Axiom Pulse
 
-## Project info
+A modern web application built with Next.js and deployed on Vercel.
 
-**URL**: https://lovable.dev/projects/b55b7346-b456-4200-9d88-41689c914ed6
+## 🚀 Live Demo
 
-## How can I edit this code?
+[![Vercel](https://vercel.com/button)](https://axiom-pulse.vercel.app)
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Framework**: Next.js
+- **Deployment**: Vercel
+- **Styling**: Tailwind CSS
+- **Version Control**: Git & GitHub
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b55b7346-b456-4200-9d88-41689c914ed6) and start prompting.
+## 🚀 Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or later)
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Local Development
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/axiom-pulse-replica.git
+   cd axiom-pulse-replica
+   ```
 
-Follow these steps:
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🌐 Deployment
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+This project is automatically deployed on Vercel. Pushing to the `main` branch will trigger a new deployment.
 
-**Edit a file directly in GitHub**
+## 📝 License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
+This project is open source and available under the [MIT License](LICENSE).
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
